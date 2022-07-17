@@ -9,7 +9,7 @@ public class Collecter : MonoBehaviour
 
     void Update()
     {
-        player.transform.position = new Vector3(transform.position.x, cubeHeight + 1, transform.position.z); // when cubes collected, increase the height of the main cube. Only Y axis, others will be same!
+        player.transform.position = new Vector3(transform.position.x, cubeHeight + 1f, transform.position.z); // when cubes collected, increase the height of the main cube. Only Y axis, others will be same!
         this.transform.localPosition = new Vector3(0f, -cubeHeight, 0f); //if cube height increases, collecter cube should be at the bottom. Relative to the parent!
     }
 
@@ -26,6 +26,12 @@ public class Collecter : MonoBehaviour
         {
             GameObject.Find("GameManager").GetComponent<GameManager>().coinsTotal++;
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("Obstacles") && cubeHeight == 0)
+        {
+            FindObjectOfType<GameManager>().canMove = false;
+            ShakeController._isShake = true;
         }
     }
 

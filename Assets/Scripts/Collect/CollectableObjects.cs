@@ -19,6 +19,11 @@ public class CollectableObjects : MonoBehaviour
         if (isCollected && transform.parent != null) // if it is collected and has parent
         {
             transform.localPosition = new Vector3(0f, -index, 0f); //set the collected cube's position.
+
+            if(transform.position.y < 0)
+            {
+                transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
