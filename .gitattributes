@@ -1,0 +1,2 @@
+*.shader linguist-language=C#
+special-vendored-path/*Pixel_Runner_3D/Assets/TextMesh Pro/Shaders
